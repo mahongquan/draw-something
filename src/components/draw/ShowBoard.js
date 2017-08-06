@@ -5,6 +5,7 @@ export default class ShowBoard extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            ct:0,
             ctx : null,
             mousePressed : false,
             lineValue : 9,
@@ -45,10 +46,9 @@ export default class ShowBoard extends Component{
             ctx : el.getContext("2d")
         });
 
-        ready = this.hasProps('ready');
+        socket = this.hasProps('socket');
 
-        if(ready){
-            socket = ready();
+        if(socket){
             this.setState({
                 socket : socket
             })

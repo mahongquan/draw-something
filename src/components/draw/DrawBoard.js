@@ -5,6 +5,7 @@ export default class DrawBoard extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            ct:0,
             ctx : null,
             mousePressed : false,
             lineValue : 3,
@@ -62,19 +63,17 @@ export default class DrawBoard extends Component{
     }
 
     ready() {
-        let ready = this.hasProps('ready'),
-            el = this.refs.myCanvas,
-            socket;
-        if(ready){
-            socket = ready();
+        let socket = this.hasProps('socket'),
+            el = this.refs.myCanvas;
+        if(socket){
             this.setState({
                 socket : socket
             });
             socket.send('getKeyWord');
             socket.on('keyword', (keyword)=>{
-                this.setState({
-                    keyword
-                })
+                console.log("---------");
+                console.log(keyword);
+                this.setState({keyword});
             })
         }
         el = this.refs.myCanvas;
