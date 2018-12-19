@@ -1,11 +1,11 @@
 var path = require('path');
 var express = require('express');
-var webpack = require('webpack');
-var config = require('./webpack.config');
+// var webpack = require('webpack');
+// var config = require('./webpack.config');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-var compiler = webpack(config);
+// var compiler = webpack(config);
 var ct=0,hasDraw=false;
 var drawSocket=null;
 var custom_id=0;
@@ -13,11 +13,11 @@ var keyword = ['猫', '大象', '飞机', '钱', '炸弹', '猪'], KEYWORD;
 
 app.use(express.static(path.join(__dirname, '/')))
     //use in webpack development mode
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-}));
-app.use(require('webpack-hot-middleware')(compiler));
+// app.use(require('webpack-dev-middleware')(compiler, {
+//     noInfo: true,
+//     publicPath: config.output.publicPath
+// }));
+// app.use(require('webpack-hot-middleware')(compiler));
 
 //use in webpack production mode
 //app.use(express.static(__dirname));
@@ -70,9 +70,9 @@ io.on('connection', function(socket) {
     });
 });
 
-server.listen(3000, function(err) {
+server.listen(8000, function(err) {
     if (err) {
         return console.log(err);
     }
-    console.log('Listening at http://localhost:3000');
+    console.log('Listening at http://localhost:8000');
 });

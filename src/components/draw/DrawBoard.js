@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import '../draw/draw.less';
+// import '../draw/draw.less';
 export default class DrawBoard extends Component{
 
     constructor(props) {

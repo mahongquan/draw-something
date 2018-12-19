@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import DrawBoard from '../components/draw/DrawBoard';
 import ShowBoard from '../components/draw/ShowBoard';
-import '../components/draw/draw.less';
+// import '../components/draw/draw.less';
 import io from 'socket.io-client';
+const HOST = 'http://localhost:8000';
+// var socket = io.connect(HOST);
 var ROLE = {none : 0, draw : 1, cai : 2};
 export default class Draw extends Component{
     constructor(props){
@@ -14,7 +16,7 @@ export default class Draw extends Component{
         }
     }
     componentDidMount() {
-        this.socket=io();
+        this.socket=io.connect(HOST);
         console.log(this.socket);
         console.log("send getct");
         this.socket.on('ct', (data)=>{
