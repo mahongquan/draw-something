@@ -11,7 +11,7 @@ var drawSocket=null;
 var custom_id=0;
 var keyword = ['猫', '大象', '飞机', '钱', '炸弹', '猪'], KEYWORD;
 
-app.use(express.static(path.join(__dirname, '/')))
+app.use(express.static(path.join(__dirname, '/public')))
     //use in webpack development mode
 // app.use(require('webpack-dev-middleware')(compiler, {
 //     noInfo: true,
@@ -22,9 +22,9 @@ app.use(express.static(path.join(__dirname, '/')))
 //use in webpack production mode
 //app.use(express.static(__dirname));
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+// app.get('/', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'index.html'));
+// });
 io.engine.generateId = (req) => {
   return "custom_id:" + custom_id++; // custom id must be unique
 }
